@@ -10,21 +10,31 @@
 
 #include "Employee.h"
 
-class TecPartTime: public Employee {
+class TecPartTime: virtual public Employee
+{
 public:
-	TecPartTime(string strName = "NewTecPP"
-			, uint uiLevel = ENUM_EMPLOYEE_LEVEL_PARTTIME_TEC
-			, float fPerHourPay = 50);
+	TecPartTime(string strName = "NewTecPP", uint uiLevel =
+			ENUM_EMPLOYEE_LEVEL_PARTTIME_TEC, float fPerHourPay = 50);
 	virtual ~TecPartTime();
 
 	//设置工作时间
 	void setWorkHour();
+
 	//显示信息
 	void info();
 	//设置所属上级
 	void setLeader(uint uiLeaderId);
 	//获得其领导
-	uint getLeader();
+	uint getLeader() const;
+	uint& getLeader();
+
+	uint getWorkHour() const;
+	uint& getWorkHour();
+
+	float getPerHourPay() const;
+	float& getPerHourPay();
+
+	void work();
 
 private:
 	uint m_uiWorkHour;
